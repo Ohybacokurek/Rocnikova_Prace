@@ -47,13 +47,27 @@ function gameArea(){
 gameArea()
 
 
+firstButton.onclick = () => {
+    console.log("start button clicked")
+    hideStartScreen();
+    showGameScreen()
 
-
+}
 
 
 secondButton.onclick = () => {
-    document.getElementById("mess").innerText;
+    console.log("About button clicked")
 }
+
+
+function hideStartScreen(){
+    firstButton.style.display = "none"
+}
+
+function showGameScreen(){
+    canvas.style.display = "inline"
+}
+
 
 
 /*function startGame() {
