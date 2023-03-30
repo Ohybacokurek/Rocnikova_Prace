@@ -14,6 +14,7 @@ const player = new Player(250, 250, canvas, "red", 20, 20);
 
 let x = 0;
 let y = 0;
+//kjhj
 let xr = 0;
 let xl = 0;
 let yu = 0;
