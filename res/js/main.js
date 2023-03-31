@@ -1,20 +1,21 @@
 import { Player } from "./player.js";
+import { Enemy } from "./enemy.js";
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 
 
-canvas.width  = 800;
+canvas.width  = 1000;
 canvas.height = 500;
 var backgroundImage = new Image(); 
 backgroundImage.src = "./res/img/background.jpg";
 
 
 const player = new Player(250, 250, canvas, "red", 20, 20);
+const enemy = new Enemy(250, 190, 10, canvas, "blue");
 
 let x = 0;
 let y = 0;
-//kjhj
 let xr = 0;
 let xl = 0;
 let yu = 0;
@@ -22,7 +23,8 @@ let yd = 0;
 
 
 function update(){
-   // ctx.clearRect(0, 0, canvas.width, canvas.height)
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    ctx.drawImage(backgroundImage, 0, 0, 800, 500);
     safeZone();
    
     player.x += xr;
@@ -30,6 +32,7 @@ function update(){
     player.y += yu;
     player.y += yd;
     player.draw();
+    enemy.draw();
     /*ctx.fillStyle = "#e32012";
     ctx.fillRect(x, y, 25, 25);
     ctx.lineWidth = 6;
@@ -37,12 +40,12 @@ function update(){
     ctx.strokeRect(x, y, 25, 25);*/
     
     //Barriers
-    if (player.x >= canvas.width - 31) {
-    player.x = canvas.width -27;
+    if (player.x >= canvas.width - 26) {
+    player.x = canvas.width -23;
   } if (player.x <= 0) {
     player.x = 3;
-  } if (player.y >= canvas.height -31) {
-    player.y = canvas.height -27;
+  } if (player.y >= canvas.height -26) {
+    player.y = canvas.height -23;
   } if (player.y <= 0) {
     player.y = 3;
   }
@@ -50,14 +53,14 @@ function update(){
    requestAnimationFrame(update);
 }
 
-//update()
+update()
 
 
 function safeZone(){
-    ctx.fillStyle = "green";
-    ctx.fillRect(0, 0, 200, 800);
-    ctx.fillStyle = "green";
-    ctx.fillRect(800 - 200, 0, 200, 800);
+    ctx.fillStyle = "#8df792";
+    ctx.fillRect(0, 0, 200, 1000);
+    ctx.fillStyle = "#8df792";
+    ctx.fillRect(1000 - 200, 0, 200, 1000);
 }
 
 
@@ -70,7 +73,7 @@ function gameArea(){
     context.fillRect(0, 0, canvas.width, canvas.height);*/
 }
 
-//gameArea()
+gameArea()
 
 
 firstButton.onclick = () => {
@@ -78,6 +81,8 @@ firstButton.onclick = () => {
     showGoBack()
     hideStartScreen()
     showGameScreen()
+    showLevels()
+    showDeaths()
 }
 
 
@@ -104,6 +109,8 @@ goBack.onclick = () => {
     hideGoBack()
     hideAboutText()
     hideCredits()
+    hideLevels()
+    hideDeaths()
 }
 
 function hideStartScreen(){
@@ -116,8 +123,7 @@ function showStartScreen(){
 
 function showGameScreen(){
     canvas.style.display = "inline";
-    //ctx.fillStyle = "white";
-    ctx.drawImage(backgroundImage, 0, 0);
+    ctx.fillStyle = "white";
 }
 
 function hideGameScreen(){
@@ -147,6 +153,22 @@ function showCredits(){
 
 function hideCredits(){
     credits.style.display = "none";
+}
+
+function showLevels(){
+    levels.style.display = "";
+}
+
+function hideLevels(){
+    levels.style.display = "none";
+}
+
+function showDeaths(){
+    deaths.style.display = "inline";
+}
+
+function hideDeaths(){
+    deaths.style.display= "none";
 }
 
 
