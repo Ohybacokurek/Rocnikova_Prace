@@ -3,7 +3,7 @@ import { Enemy } from "./enemy.js";
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-
+var counter = document.getElementById("number");
 
 canvas.width  = 1000;
 canvas.height = 500;
@@ -11,15 +11,17 @@ var backgroundImage = new Image();
 backgroundImage.src = "./res/img/background.jpg";
 
 
-const player = new Player(250, 250, canvas, "red", 20, 20);
-const enemy = new Enemy(250, 190, 10, canvas, "blue");
+const player = new Player(90, 240, canvas, "red", 20, 20);
+const enemy = new Enemy(250, 190, 10, canvas, "blue", 0, 5, "down");
 
+var deathsCount = 0;
 let x = 0;
 let y = 0;
 let xr = 0;
 let xl = 0;
 let yu = 0;
 let yd = 0;
+let level1Enemy = []
 
 
 function update(){
@@ -32,7 +34,34 @@ function update(){
     player.y += yu;
     player.y += yd;
     player.draw();
-    enemy.draw();
+
+    level1Enemy.forEach(enemy => {
+        enemy.draw();
+        enemy.checkBarriers();
+        //smer enemy
+        if(enemy.direction == "up"){
+            enemy.moveUp()
+        }else{
+            enemy.moveDown()
+        }   
+        
+        //collisions
+        if(player.x + player.width >= enemy.x - enemy.r 
+            && player.x <= enemy.x + enemy.r 
+            && player.y + player.height >= enemy.y - enemy.r 
+            && player.y <= enemy.y + enemy.r){
+                var temp = deathsCount
+            deathsCount = deathsCount + 1
+            counter.innerHTML = "Deaths: " + deathsCount.toString() 
+            if(temp !== deathsCount){
+                player.x = 90 
+                player.y = 240
+            }
+    
+            console.log("collision")
+        }
+    });    
+    
     /*ctx.fillStyle = "#e32012";
     ctx.fillRect(x, y, 25, 25);
     ctx.lineWidth = 6;
@@ -49,11 +78,17 @@ function update(){
   } if (player.y <= 0) {
     player.y = 3;
   }
-
-   requestAnimationFrame(update);
+    
+     requestAnimationFrame(update);
 }
 
 update()
+
+
+
+function level1(){
+    level1Enemy.push(new Enemy( 300, 150, 10, canvas, "blue", 0, 5, "down"))
+}
 
 
 function safeZone(){
@@ -83,6 +118,7 @@ firstButton.onclick = () => {
     showGameScreen()
     showLevels()
     showDeaths()
+    level1()
 }
 
 
@@ -111,6 +147,7 @@ goBack.onclick = () => {
     hideCredits()
     hideLevels()
     hideDeaths()
+    level1Enemy = [];
 }
 
 function hideStartScreen(){
