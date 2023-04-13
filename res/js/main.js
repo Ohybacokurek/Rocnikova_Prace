@@ -12,7 +12,6 @@ backgroundImage.src = "./res/img/background.jpg";
 
 
 const player = new Player(90, 240, canvas, "red", 20, 20);
-const enemy = new Enemy(250, 190, 10, canvas, "blue", 0, 5, "down");
 
 var deathsCount = 0;
 let x = 0;
@@ -22,11 +21,12 @@ let xl = 0;
 let yu = 0;
 let yd = 0;
 let level1Enemy = []
+let level2Enemy = []
 
 
 function update(){
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    ctx.drawImage(backgroundImage, 0, 0, 800, 500);
+    ctx.drawImage(backgroundImage, 200, 0, 600, 500);
     safeZone();
    
     player.x += xr;
@@ -38,12 +38,19 @@ function update(){
     level1Enemy.forEach(enemy => {
         enemy.draw();
         enemy.checkBarriers();
-        //smer enemy
-        if(enemy.direction == "up"){
-            enemy.moveUp()
-        }else{
+
+    
+    
+        //direction enemy level1
+        if(enemy.direction == "down"){
             enemy.moveDown()
-        }   
+        }else{
+            enemy.moveUp()
+        }if(enemy.direction == "right"){
+            enemy.moveRight()
+        }else{
+            enemy.moveLeft()
+        }
         
         //collisions
         if(player.x + player.width >= enemy.x - enemy.r 
@@ -61,12 +68,35 @@ function update(){
             console.log("collision")
         }
     });    
+
+    level2Enemy.forEach(enemy => {
+        enemy.draw();
+        enemy.checkBarriers(); 
     
-    /*ctx.fillStyle = "#e32012";
-    ctx.fillRect(x, y, 25, 25);
-    ctx.lineWidth = 6;
-    ctx.strokeStyle = "black";
-    ctx.strokeRect(x, y, 25, 25);*/
+        //direction enemy level2
+        if(enemy.direction == "right"){
+            enemy.moveRight()
+        }else{
+            enemy.moveLeft()
+        }
+    
+        //collisions
+        if(player.x + player.width >= enemy.x - enemy.r 
+            && player.x <= enemy.x + enemy.r 
+            && player.y + player.height >= enemy.y - enemy.r 
+            && player.y <= enemy.y + enemy.r){
+                var temp = deathsCount
+            deathsCount = deathsCount + 1
+            counter.innerHTML = "Deaths: " + deathsCount.toString() 
+            if(temp !== deathsCount){
+                player.x = 90 
+                player.y = 240
+            }
+    
+            console.log("collision")
+        }
+    })
+    
     
     //Barriers
     if (player.x >= canvas.width - 26) {
@@ -78,6 +108,19 @@ function update(){
   } if (player.y <= 0) {
     player.y = 3;
   }
+
+
+    //další level, konec hry
+    if (player.x + 20 >= canvas.width - 200) {
+        hideLevel1()
+        level2()
+        if (player.x + 20 == canvas.width - 200) {
+            player.x = 90
+            player.y = 240
+        }
+    }
+        
+    
     
      requestAnimationFrame(update);
 }
@@ -87,7 +130,37 @@ update()
 
 
 function level1(){
-    level1Enemy.push(new Enemy( 300, 150, 10, canvas, "blue", 0, 5, "down"))
+    level1Enemy.push(new Enemy( 220, 10, 10, canvas, "blue", 0, 10, "down"))
+    level1Enemy.push(new Enemy( 260, 490, 10, canvas, "blue", 0, 10, "up"))
+    level1Enemy.push(new Enemy( 300, 10, 10, canvas, "blue", 0, 10, "down"))
+    level1Enemy.push(new Enemy( 340, 490, 10, canvas, "blue", 0, 10, "up"))
+    level1Enemy.push(new Enemy( 380, 10, 10, canvas, "blue", 0, 10, "down"))
+    level1Enemy.push(new Enemy( 420, 490, 10, canvas, "blue", 0, 10, "up"))
+    level1Enemy.push(new Enemy( 460, 10, 10, canvas, "blue", 0, 10, "down"))
+    level1Enemy.push(new Enemy( 500, 490, 10, canvas, "blue", 0, 10, "up"))
+    level1Enemy.push(new Enemy( 540, 10, 10, canvas, "blue", 0, 10, "down"))
+    level1Enemy.push(new Enemy( 580, 490, 10, canvas, "blue", 0, 10, "up"))
+    level1Enemy.push(new Enemy( 620, 10, 10, canvas, "blue", 0, 10, "down"))
+    level1Enemy.push(new Enemy( 660, 490, 10, canvas, "blue", 0, 10, "up"))
+    level1Enemy.push(new Enemy( 700, 10, 10, canvas, "blue", 0, 10, "down"))
+    level1Enemy.push(new Enemy( 740, 490, 10, canvas, "blue", 0, 10, "up"))
+    level1Enemy.push(new Enemy( 780, 10, 10, canvas, "blue", 0, 10, "down"))
+}
+
+function level2(){
+    level2Enemy.push(new Enemy( 215, 10, 10, canvas, "blue", 10, 0, "right"))
+    level2Enemy.push(new Enemy( 785, 50, 10, canvas, "blue", 10, 0, "left"))
+    level2Enemy.push(new Enemy( 215, 90, 10, canvas, "blue", 10, 0, "right"))
+    level2Enemy.push(new Enemy( 785, 130, 10, canvas, "blue", 10, 0, "left"))
+    level2Enemy.push(new Enemy( 215, 170, 10, canvas, "blue", 10, 0, "right"))
+    level2Enemy.push(new Enemy( 785, 210, 10, canvas, "blue", 10, 0, "left"))
+    level2Enemy.push(new Enemy( 215, 250, 10, canvas, "blue", 10, 0, "right"))
+    level2Enemy.push(new Enemy( 785, 290, 10, canvas, "blue", 10, 0, "left"))
+    level2Enemy.push(new Enemy( 215, 330, 10, canvas, "blue", 10, 0, "right"))
+    level2Enemy.push(new Enemy( 785, 370, 10, canvas, "blue", 10, 0, "right"))
+    level2Enemy.push(new Enemy( 215, 410, 10, canvas, "blue", 10, 0, "right"))
+    level2Enemy.push(new Enemy( 785, 450, 10, canvas, "blue", 10, 0, "right"))
+    level2Enemy.push(new Enemy( 215, 490, 10, canvas, "blue", 10, 0, "right"))
 }
 
 
@@ -103,9 +176,6 @@ function gameArea(){
     ctx.lineWidth = 6;
     ctx.strokeStyle = "black";
     ctx.strokeRect(0, 0, canvas.width, canvas.height);
-    
-    /*context.drawImage(backgroundImage, 0, 0);
-    context.fillRect(0, 0, canvas.width, canvas.height);*/
 }
 
 gameArea()
@@ -148,6 +218,7 @@ goBack.onclick = () => {
     hideLevels()
     hideDeaths()
     level1Enemy = [];
+    level2Enemy = [];
 }
 
 function hideStartScreen(){
@@ -205,15 +276,23 @@ function showDeaths(){
 }
 
 function hideDeaths(){
-    deaths.style.display= "none";
+    deaths.style.display = "none";
+}
+
+function showGameOver(){
+    gameOver.style.display = "inline";
+}
+
+function hideLevel1(){
+    level1.style.display = "none";
 }
 
 
 addEventListener("keydown", function(e){
-    if (e.code == "KeyD") xr = 5;
-    if (e.code == "KeyA") xl = -5;
-    if (e.code == "KeyW") yu = -5;
-    if (e.code == "KeyS") yd = 5;
+    if (e.code == "KeyD") xr = 3;
+    if (e.code == "KeyA") xl = -3;
+    if (e.code == "KeyW") yu = -3;
+    if (e.code == "KeyS") yd = 3;
 })
 
 addEventListener("keyup", function(e){

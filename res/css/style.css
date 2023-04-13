@@ -123,3 +123,10 @@ canvas {
 .wrapper {
   margin-top: 3%;
 }
+
+.gameOver {
+  color: red;
+  text-align: center;
+  font-style: italic;
+  font-size: 400%;
+}

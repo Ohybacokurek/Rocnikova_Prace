@@ -22,12 +22,22 @@ moveDown(){
 moveUp(){
     this.y = this.y - this.speedY;
 }
+moveRight(){
+    this.x = this.x - this.speedX;
+}
+moveLeft(){
+    this.x = this.x + this.speedX
+}
 checkBarriers(){
     if(this.y >= this.canvas.height - 5){
         this.direction = "up" 
         
     }if(this.y <= 5){
         this.direction = "down"
+    }if(this.x >= this.canvas.width - 210){
+        this.direction = "right"
+    }if(this.x <= 210){
+        this.direction = "left"
     }
 }
 
