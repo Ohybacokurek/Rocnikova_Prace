@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="res/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div class="wrapper" id="wrapper">
+        <div id="goBack" class="goBack" style="display: none">
+            <a>Go Back</a>
+        </div>
+        <div id="levels" class="levels" style="display: none">
+            <div id="levelPLus">Level 1</div>
+        </div>
+        <div id="deaths" class="deaths" style="display: none">
+            <div id="number" class="number">Deaths: 0</div>
+            
+        </div>
+        </div>
+        <div id="startMenu" style="display: inline">
+        <p class="menuText" >World's Hardest Game</p>
+        <button class="btn1" id="firstButton" >Start Game</button>
+        <button class="btn2" id="secondButton" >About Game</button>
+        <button class="btn3" id="thirdButton" >Credits</button>
+        </div>
+        <div style="text-align: center">
+        <canvas id="canvas" style="display: none"></canvas>
+        </div>
+        <div id="aboutText" class="aboutText" style="display: none">
+            <h1>Pozor!!!</h1>
+            <p>Tato hra je určená jen pro opravdové machry.<br>
+               Základem hry je vjet kostičkou na zelené pole a tím se dostat do dalšího levelu.<br>
+               Ovládání kostičky je pomocí WSAD.<br> 
+               Přeji příjemnou zábavu.</p>
+        </div>
+        <div id="credits" class="credits" style="display: none">
+            <h1>Vytvořil Ondřej Naďo</h1>
+            <p>PS: Stížnosti žádné nepříjmáme.&#128512;</p>
+        </div>
+        <div id="gameOver" class="gameOver" style="display: none">
+            <h1>Game Over</h1>
+            <p>Gratuluji vám, v tuhle chvíli hra nemá více levelů a tím pádem jste ji dohrál.&#128079;</p>
+        </div>
+    
+
+    </div>
+</body>
+<script src="res/js/main.js" type="module"></script>
+
+</html>
