@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,27 +8,37 @@
     <link rel="stylesheet" href="res/css/style.css">
     <title>Document</title>
 </head>
+
 <body>
-    <div>
-        <div class="wrapper" id="wrapper">
-        <div id="goBack" class="goBack" style="display: none">
-            <a>Go Back</a>
+    <div class="wrapper" id="wrapper">
+        <div class="topBanner">
+            <div id="goBack" class="goBack" style="display: none">
+                <a>Go Back</a>
+            </div>
+            <div id="levels" class="levels" style="display: none">
+                <div id="levelPLus">Level 1</div>
+            </div>
+            <div id="deaths" class="deaths" style="display: none">
+                <div id="number" class="number">Deaths: 0</div>
+                
+            </div>
         </div>
-        <div id="levels" class="levels" style="display: none">
-            <div id="levelPLus">Level 1</div>
-        </div>
-        <div id="deaths" class="deaths" style="display: none">
-            <div id="number" class="number">Deaths: 0</div>
+        <p class="menuText" id="menuText">World's Hardest Game</p>
+        <div id="startMenu" class="startMenu">
             
-        </div>
-        </div>
-        <div id="startMenu" style="display: inline">
-        <p class="menuText" >World's Hardest Game</p>
-        <button class="btn1" id="firstButton" >Start Game</button>
-        <button class="btn2" id="secondButton" >About Game</button>
-        <button class="btn3" id="thirdButton" >Credits</button>
-        </div>
-        <div style="text-align: center">
+           <div class="button-cont"> 
+            <button class="btn1" id="firstButton" >Start Game</button>
+            </div>
+            <div class="button-cont">
+            <button class="btn2" id="secondButton" >About Game</button>
+            </div>
+            <div class="button-cont">
+            <button class="btn3" id="thirdButton" >Credits</button>
+            </div>
+            </div>
+            
+    </div>
+    <div style="text-align: center">
         <canvas id="canvas" style="display: none"></canvas>
         </div>
         <div id="aboutText" class="aboutText" style="display: none">
@@ -45,9 +56,6 @@
             <h1>Game Over</h1>
             <p>Gratuluji vám, v tuhle chvíli hra nemá více levelů a tím pádem jste ji dohrál.&#128079;</p>
         </div>
-    
-
-    </div>
 </body>
 <script src="res/js/main.js" type="module"></script>
 

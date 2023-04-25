@@ -105,7 +105,7 @@ function update() {
         player.x = canvas.width - 23;
     } if (player.x <= 0) {
         player.x = 3;
-    } if (player.y >= canvas.height - 26) {
+    } if (player.y >= canvas.height - 23) {
         player.y = canvas.height - 23;
     } if (player.y <= 0) {
         player.y = 3;
@@ -204,6 +204,7 @@ firstButton.onclick = () => {
     showGameScreen()
     showLevels()
     showDeaths()
+    hidemenuText()
     levelEnemy = level1()
 }
 
@@ -213,6 +214,7 @@ secondButton.onclick = () => {
     hideStartScreen()
     showAboutText()
     showGoBack()
+    hidemenuText()
 }
 
 
@@ -221,6 +223,7 @@ thirdButton.onclick = () => {
     showCredits()
     showGoBack()
     hideStartScreen()
+    hidemenuText()
 }
 
 
@@ -233,6 +236,7 @@ goBack.onclick = () => {
     hideDeaths()
     hideGameOver()
     showStartScreen()
+    showmenuText()
     currentLevel = 1;
     levelText.innerHTML = "Level: " + currentLevel.toString()
     levelEnemy = [];
@@ -244,7 +248,7 @@ function hideStartScreen() {
 }
 
 function showStartScreen() {
-    startMenu.style.display = "inline";
+    startMenu.style.display = "";
 }
 
 function showGameScreen() {
@@ -307,6 +311,14 @@ function showGameOver() {
 
 function hideGameOver() {
     gameOver.style.display = "none";
+}
+
+function hidemenuText(){
+    menuText.style.display = "none";
+}
+
+function showmenuText(){
+    menuText.style.display = "";
 }
 
 addEventListener("keydown", function (e) {
