@@ -1,0 +1,144 @@
+html, body {
+  background-color:black;
+}
+
+.menuText {
+  color: white;
+  text-align: center;
+  font-size: 100px;
+  font-style: italic;
+}
+
+.startMenu {
+  width: 20%;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 5%;
+}
+
+.btn1 {
+  background-color: red;
+  color:black;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 12px;
+  height: 100%;
+}
+
+
+button:hover {
+  background-color:#00ff13;
+  color: white;
+}
+
+.btn2 {
+  background-color: red;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 12px;
+  height: 100%;
+}
+
+
+.btn3 {
+  background-color: red;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 12px;
+  height: 100%;
+}
+
+canvas {
+  background-color: white;
+  margin-top: 7%;
+}
+
+
+.goBack {
+  border-radius: 15px;
+  width: 5%;
+  text-align: center;
+  border: outset; 
+  font-weight: bold; 
+  text-decoration: none;
+  color: white;  
+  margin-left: 2%;
+}
+
+.goBack:hover { 
+  background: red; 
+  color: black; 
+  border: inset;
+}
+
+.goBack:link, .goBack:visited { 
+  background: #000080; 
+  color: #fff; 
+}
+
+.aboutText {
+  color: red;
+  text-align: center;
+  font-style: italic;
+  font-size: 210%;
+}
+
+.credits {
+  color: red;
+  text-align: center;
+  font-style: italic;
+  font-size: 250%;
+}
+
+.levels {
+  color: white;
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+  
+}
+
+.deaths {
+  float: right;
+  color: white; 
+  margin-right: 3%;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.wrapper {
+  width: 100%;
+  height: auto;
+}
+
+.gameOver {
+  color: red;
+  text-align: center;
+  font-style: italic;
+  font-size: 400%;
+}
+
+.topBanner {
+  width: 100%;
+  height: auto;
+  padding-top: 1%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-cont {
+  width: 100%;
+  margin-bottom: 2%;
+}
